@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 214547254}
   m_Layer: 5
   m_Name: Resume
-  m_TagString: pause
+  m_TagString: pauseItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -547,6 +547,7 @@ MonoBehaviour:
   resumeGame: {fileID: 214547254}
   mainMenuPaused: {fileID: 1179519338}
   pauseGame: {fileID: 411910929}
+  gamePaused: {fileID: 1260990823}
 --- !u!1 &758317089
 GameObject:
   m_ObjectHideFlags: 0
@@ -927,7 +928,7 @@ GameObject:
   - component: {fileID: 1179519338}
   m_Layer: 5
   m_Name: Main menu Paused
-  m_TagString: pause
+  m_TagString: pauseItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1034,9 +1035,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1216951437}
   - component: {fileID: 1216951436}
-  - component: {fileID: 1216951438}
   - component: {fileID: 1216951439}
   - component: {fileID: 1216951435}
+  - component: {fileID: 1216951438}
   m_Layer: 0
   m_Name: carro
   m_TagString: Untagged
@@ -1214,6 +1215,7 @@ MonoBehaviour:
   velocity: 0.5
   leftLimit: -2.25
   rightLimit: 2.28
+  pauseGame: {fileID: 411910927}
 --- !u!50 &1216951439
 Rigidbody2D:
   serializedVersion: 4
@@ -1246,7 +1248,7 @@ GameObject:
   - component: {fileID: 1260990823}
   m_Layer: 5
   m_Name: Game paused
-  m_TagString: pause
+  m_TagString: pauseItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

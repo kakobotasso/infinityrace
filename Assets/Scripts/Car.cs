@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Car : MonoBehaviour {
 
@@ -8,11 +9,20 @@ public class Car : MonoBehaviour {
 	public float leftLimit;
 	public float rightLimit;
 	GameObject[] gameOverObjects;
+	GameObject[] pauseObjects;
+	public GameObject pauseGame;
 	bool playing;
+	bool dead;
 
 	void Start () {
 		gameOverObjects = GameObject.FindGameObjectsWithTag ("gameOver");
+		pauseObjects = GameObject.FindGameObjectsWithTag ("pauseItem");
+		foreach (GameObject g in pauseObjects) {
+			g.SetActive (false);
+		}
+
 		playing = true;
+		dead = false;
 
 		foreach (GameObject g in gameOverObjects) {
 			g.SetActive (false);
@@ -22,6 +32,12 @@ public class Car : MonoBehaviour {
 	void Update () {
 		Vector3 dir = new Vector3(Input.acceleration.x * velocity, 0.0f, 0.0f);
 		Vector3 newPosition = transform.position + dir;
+
+		if (pauseGame.activeSelf && !dead) {
+			playing = true;
+		} else {
+			playing = false;
+		}
 
 		if (playing) {
 			if (newPosition.x > leftLimit && newPosition.x < rightLimit) {
@@ -44,6 +60,7 @@ public class Car : MonoBehaviour {
 				g.SetActive (true);
 			}
 			playing = false;
+			dead = true;
 			Time.timeScale = 0;	
 		}
 	}
