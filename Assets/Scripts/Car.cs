@@ -5,10 +5,14 @@ using UnityEngine;
 public class Car : MonoBehaviour {
 
 	public float velocity;
+	public float leftLimit;
+	public float rightLimit;
 	GameObject[] gameOverObjects;
+	bool playing;
 
 	void Start () {
 		gameOverObjects = GameObject.FindGameObjectsWithTag ("gameOver");
+		playing = true;
 
 		foreach (GameObject g in gameOverObjects) {
 			g.SetActive (false);
@@ -17,14 +21,30 @@ public class Car : MonoBehaviour {
 
 	void Update () {
 		Vector3 dir = new Vector3(Input.acceleration.x * velocity, 0.0f, 0.0f);
-		transform.position += dir;	
+		Vector3 newPosition = transform.position + dir;
+
+		if (playing) {
+			if (newPosition.x > leftLimit && newPosition.x < rightLimit) {
+				transform.position = newPosition;
+			} else {
+				if (newPosition.x > leftLimit) {
+					newPosition.x = rightLimit;
+				} else if (newPosition.x < rightLimit) {
+					newPosition.x = leftLimit;
+				}
+				transform.position = newPosition;
+			}
+		}
+
 	}
 
 	void OnCollisionEnter2D(Collision2D other){
-		foreach (GameObject g in gameOverObjects) {
-			g.SetActive (true);
+		if (other.gameObject.tag == "enemy") {
+			foreach (GameObject g in gameOverObjects) {
+				g.SetActive (true);
+			}
+			playing = false;
+			Time.timeScale = 0;	
 		}
-		Time.timeScale = 0;
 	}
-
 }

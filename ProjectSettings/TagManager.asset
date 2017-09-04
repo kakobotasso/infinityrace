@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - gameOver
+  - enemy
+  - pause
   layers:
   - Default
   - TransparentFX
