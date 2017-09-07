@@ -16,8 +16,9 @@ public class Enemy : MonoBehaviour {
 			Destroy (gameObject);
 		}
 
-		if (screenPosition.y <= -Screen.height){
-			// UPDATE SCORE
+
+		if (gameObject.transform.position.y <= -6.1f) {
+			GameObject.Find ("Main Camera").GetComponent<Score> ().SendMessage ("IncrementAndDrawScore");
 			// INCREMENT VELOCITY
 			Destroy (gameObject);
 		}
