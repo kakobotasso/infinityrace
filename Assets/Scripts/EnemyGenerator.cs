@@ -20,6 +20,7 @@ public class EnemyGenerator : MonoBehaviour {
 	string allRandom = "";
 
 	void Start () {
+		Screen.sleepTimeout = SleepTimeout.NeverSleep;
 		InvokeRepeating ("CreateEnemy", 0.5f, 3.5f);
 	}
 
