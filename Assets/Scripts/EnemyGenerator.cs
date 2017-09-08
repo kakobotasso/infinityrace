@@ -20,7 +20,7 @@ public class EnemyGenerator : MonoBehaviour {
 
 	void Start () {
 		Screen.sleepTimeout = SleepTimeout.NeverSleep;
-		InvokeRepeating ("CreateEnemy", 0.5f, 3.5f);
+		InvokeRepeating ("CreateEnemy", 0.01f, 4.5f);
 	}
 
 	void CreateEnemy() {
