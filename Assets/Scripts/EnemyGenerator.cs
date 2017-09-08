@@ -17,7 +17,6 @@ public class EnemyGenerator : MonoBehaviour {
 	bool line04Used = false;
 
 	bool running = true;
-	string allRandom = "";
 
 	void Start () {
 		Screen.sleepTimeout = SleepTimeout.NeverSleep;

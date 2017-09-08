@@ -11,12 +11,10 @@ public class Buttons : MonoBehaviour {
 	public Button mainMenuPaused;
 	public Button pauseGame;
 	public Text gamePaused;
-	GameObject[] pauseObjects;
-
+	float scale;
 
 	void Start () {
 		Time.timeScale = 1;
-		pauseObjects = GameObject.FindGameObjectsWithTag ("pauseItem");
 
 		if (playAgain != null) {
 			playAgain.onClick.AddListener (GoToGame);
@@ -56,6 +54,7 @@ public class Buttons : MonoBehaviour {
 	}
 
 	public void PauseGame () {
+		scale = Time.timeScale;
 		Time.timeScale = 0;
 
 		gamePaused.gameObject.SetActive (true);
@@ -66,7 +65,7 @@ public class Buttons : MonoBehaviour {
 	}
 
 	public void ResumeGame () {
-		Time.timeScale = 1;
+		Time.timeScale = scale;
 
 		gamePaused.gameObject.SetActive (false);
 		resumeGame.gameObject.SetActive(false);

@@ -5,8 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour {
 
 	public float velocity;
-	
-	// Update is called once per frame
+
 	void Update () {
 		transform.Translate (Vector2.down * velocity * Time.deltaTime);
 
@@ -19,7 +18,7 @@ public class Enemy : MonoBehaviour {
 
 		if (gameObject.transform.position.y <= -6.1f) {
 			GameObject.Find ("Main Camera").GetComponent<Score> ().SendMessage ("IncrementAndDrawScore");
-			// INCREMENT VELOCITY
+			GameObject.Find ("Main Camera").GetComponent<VelocityManager> ().SendMessage ("IncreaseVelocity");
 			Destroy (gameObject);
 		}
 	}
