@@ -61,7 +61,7 @@ public class Buttons : MonoBehaviour {
 		resumeGame.gameObject.SetActive(true);
 		mainMenuPaused.gameObject.SetActive(true);
 
-		pauseGame.gameObject.SetActive (false);
+		HidePauseButton ();
 	}
 
 	public void ResumeGame () {
@@ -72,5 +72,9 @@ public class Buttons : MonoBehaviour {
 		mainMenuPaused.gameObject.SetActive(false);
 
 		pauseGame.gameObject.SetActive (true);
+	}
+
+	public void HidePauseButton () {
+		pauseGame.gameObject.SetActive (false);
 	}
 }

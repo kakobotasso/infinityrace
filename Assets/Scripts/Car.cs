@@ -16,10 +16,6 @@ public class Car : MonoBehaviour {
 
 	void Start () {
 		gameOverObjects = GameObject.FindGameObjectsWithTag ("gameOver");
-		pauseObjects = GameObject.FindGameObjectsWithTag ("pauseItem");
-		foreach (GameObject g in pauseObjects) {
-			g.SetActive (false);
-		}
 
 		playing = true;
 		dead = false;
@@ -61,7 +57,8 @@ public class Car : MonoBehaviour {
 			}
 			playing = false;
 			dead = true;
-			Time.timeScale = 0;	
+			Time.timeScale = 0;
+			GameObject.Find ("Main Camera").GetComponent<Buttons> ().SendMessage ("HidePauseButton");
 		}
 	}
 }
